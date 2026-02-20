@@ -1,7 +1,7 @@
 /**
  * recommend.ts
- * 자동차 추천 로직
- * 사용자 입력을 기반으로 최적의 자동차 종류를 추천
+ * 자동차 매칭 로직
+ * 사용자 입력을 기반으로 어울리는 자동차 종류를 안내
  */
 // 예산 레벨 변환 (비교 연산용)
 const budgetLevel = {
@@ -19,8 +19,8 @@ const isVeryHighBudget = (budget) => budgetLevel[budget] >= 4;
 // 예산이 매우 낮은지 확인 (2천만원 이하)
 const isVeryLowBudget = (budget) => budgetLevel[budget] === 1;
 /**
- * 메인 추천 함수
- * 사용자 입력을 받아 1~3개의 자동차 카테고리를 추천
+ * 메인 매칭 함수
+ * 사용자 입력을 받아 1~3개의 어울리는 자동차 카테고리를 안내
  */
 export function recommendCars(input) {
     const { gender, bodySize, preferences, budget } = input;
@@ -163,9 +163,9 @@ export function recommendCars(input) {
             });
         }
     }
-    // 7. 신체 크기 기반 추가 추천
+    // 7. 신체 크기 기반 추가 안내
     if (bodySize === 'large' && recommendations.length < 3) {
-        // 대형 체형은 넓은 차량 추천
+        // 대형 체형은 넓은 차량 안내
         if (!hasPreference('costEffective') && !recommendations.some(r => r.category.includes('SUV') || r.category.includes('대형'))) {
             recommendations.push({
                 category: '대형 SUV/세단',
@@ -190,9 +190,9 @@ export function recommendCars(input) {
             });
         }
     }
-    // 8. 기본 추천 (선호도가 명확하지 않은 경우)
+    // 8. 기본 안내 (선호도가 명확하지 않은 경우)
     if (recommendations.length === 0) {
-        // 예산별 기본 추천
+        // 예산별 기본 안내
         if (isVeryHighBudget(budget)) {
             recommendations.push({
                 category: '프리미엄 세단/SUV',
@@ -230,7 +230,7 @@ export function recommendCars(input) {
         .slice(0, 3);
 }
 /**
- * 추천 결과에 대한 추가 조언 생성
+ * 결과에 대한 추가 조언 생성
  */
 export function getAdditionalAdvice(input) {
     const { bodySize, budget } = input;
@@ -257,10 +257,10 @@ export function getAdditionalAdvice(input) {
 export function generateShareText(recommendations) {
     const topRecommendation = recommendations[0];
     if (!topRecommendation) {
-        return '내 차를 찾아줘 앱에서 나에게 맞는 차를 추천받아보세요!';
+        return '내 차를 찾아줘 앱에서 나에게 어울리는 차를 알아보세요!';
     }
-    return `[내 차를 찾아줘 추천 결과]\n\n` +
-        `${topRecommendation.emoji} 추천 차종: ${topRecommendation.category}\n` +
-        `예시: ${topRecommendation.example}\n\n` +
-        `나도 추천받으러 가기 👉 (앱 링크)`;
+    return `[내 차를 찾아줘 결과]\n\n` +
+        `${topRecommendation.emoji} 어울리는 차종: ${topRecommendation.category}\n` +
+        `참고 차종: ${topRecommendation.example}\n\n` +
+        `나도 알아보러 가기 👉 (앱 링크)`;
 }

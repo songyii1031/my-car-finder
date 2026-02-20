@@ -14,7 +14,7 @@ export default defineConfig({
         // 앱 버전
         version: '1.0.0',
         // 앱 설명
-        description: '사용자 맞춤 자동차 추천 큐레이션 미니앱',
+        description: '나에게 어울리는 자동차를 찾아주는 큐레이션 미니앱',
     },
     // 테마 설정
     theme: {
