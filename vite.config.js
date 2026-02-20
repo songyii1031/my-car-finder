@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+// ESM 호환 __dirname 대체
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 export default defineConfig({
     plugins: [react()],
     publicDir: 'public',
@@ -10,11 +14,11 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, '.'),
-            '@components': path.resolve(__dirname, 'components'),
-            '@utils': path.resolve(__dirname, 'utils'),
-            '@store': path.resolve(__dirname, 'store'),
-            '@styles': path.resolve(__dirname, 'styles'),
+            '@': resolve(__dirname, '.'),
+            '@components': resolve(__dirname, 'components'),
+            '@utils': resolve(__dirname, 'utils'),
+            '@store': resolve(__dirname, 'store'),
+            '@styles': resolve(__dirname, 'styles'),
         },
     },
 });

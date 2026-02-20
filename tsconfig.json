@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "types": ["node"],
     "typeRoots": ["./types", "./node_modules/@types"],
     "paths": {
       "@/*": ["./*"],
