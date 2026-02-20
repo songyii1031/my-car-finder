@@ -34,13 +34,13 @@ const ResultScreen: React.FC = () => {
     const shareText = generateShareText(recommendations);
     if (navigator.share) {
       try {
-        await navigator.share({ title: '내 차를 찾아줘 추천 결과', text: shareText });
+        await navigator.share({ title: '내 차를 찾아줘 결과', text: shareText });
       } catch {
         // 사용자가 취소한 경우 등
       }
     } else {
       await navigator.clipboard.writeText(shareText);
-      alert('추천 결과가 클립보드에 복사되었어요!');
+      alert('결과가 클립보드에 복사되었어요!');
     }
   };
 
@@ -53,7 +53,7 @@ const ResultScreen: React.FC = () => {
             정보가 부족해요
           </div>
           <div style={{ fontSize: typography.fontSize.body2, color: colors.gray600, textAlign: 'center', marginBottom: spacing.xxl, lineHeight: 1.75 }}>
-            모든 단계를 완료해야 추천을 받을 수 있어요.
+            모든 단계를 완료해야 결과를 확인할 수 있어요.
           </div>
           <Button
             label="처음부터 시작하기"
@@ -91,17 +91,17 @@ const ResultScreen: React.FC = () => {
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: spacing.xxl, paddingTop: spacing.lg }}>
         <span style={{ fontSize: 48, marginBottom: spacing.md }}>🎉</span>
         <div style={{ fontSize: typography.fontSize.h2, fontWeight: typography.fontWeight.bold, color: colors.gray900, marginBottom: spacing.sm, textAlign: 'center' }}>
-          추천 결과가 나왔어요!
+          결과가 나왔어요!
         </div>
         <div style={{ fontSize: typography.fontSize.body2, color: colors.gray600, textAlign: 'center' }}>
           당신에게 딱 맞는 차를 찾아봤어요
         </div>
       </div>
 
-      {/* 추천 결과 카드 */}
+      {/* 매칭 결과 카드 */}
       <div style={{ marginBottom: spacing.xxl }}>
         <div style={{ fontSize: typography.fontSize.body1, fontWeight: typography.fontWeight.semibold, color: colors.gray900, marginBottom: spacing.lg }}>
-          추천 차종 ({recommendations.length}개)
+          어울리는 차종 ({recommendations.length}개)
         </div>
         {recommendations.map((recommendation, index) => (
           <CarResultCard
@@ -130,7 +130,8 @@ const ResultScreen: React.FC = () => {
       {/* 면책 문구 */}
       <div style={{ backgroundColor: colors.gray100, borderRadius: borderRadius.md, padding: spacing.lg, marginBottom: spacing.md }}>
         <div style={{ fontSize: typography.fontSize.caption, color: colors.gray600, textAlign: 'center', lineHeight: 1.75 }}>
-          ⚠️ 본 추천은 참고용이며, 실제 구매 시 전문가 상담을 권장합니다.
+          ⚠️ 본 결과는 일반적인 정보 제공 목적이며, 특정 브랜드/제조사와 제휴 관계가 없습니다.
+          실제 구매 시 전문가 상담 및 시승을 권장합니다.
         </div>
       </div>
     </ScreenContainer>

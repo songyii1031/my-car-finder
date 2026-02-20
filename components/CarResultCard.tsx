@@ -72,15 +72,15 @@ const CarResultCard: React.FC<CarResultCardProps> = ({ recommendation, rank }) =
         </div>
       </div>
 
-      {/* 추천 차종 */}
+      {/* 어울리는 차종 */}
       <div style={{ backgroundColor: colors.gray50, borderRadius: borderRadius.md, padding: spacing.lg, marginBottom: spacing.lg }}>
-        <div style={{ fontSize: typography.fontSize.caption, color: colors.gray600, marginBottom: spacing.xs }}>추천 차종</div>
+        <div style={{ fontSize: typography.fontSize.caption, color: colors.gray600, marginBottom: spacing.xs }}>어울리는 차종</div>
         <div style={{ fontSize: typography.fontSize.body2, fontWeight: typography.fontWeight.semibold, color: colors.gray900, lineHeight: 1.5 }}>
           {example}
         </div>
       </div>
 
-      {/* 추천 이유 */}
+      {/* 선정 이유 */}
       <div style={{ borderLeft: `3px solid ${colors.primary}`, paddingLeft: spacing.lg }}>
         <div style={{ fontSize: typography.fontSize.body3, color: colors.gray700, lineHeight: 1.75 }}>
           {reason}
