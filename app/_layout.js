@@ -25,7 +25,7 @@ export default function RootLayout() {
                 } }), _jsx(Stack.Screen, { name: "step4", options: {
                     title: '예산 범위',
                 } }), _jsx(Stack.Screen, { name: "result", options: {
-                    title: '추천 결과',
+                    title: '탐색 결과',
                     // 결과 화면에서는 뒤로가기 제스처 비활성화
                     gestureEnabled: false,
                 } })] }));

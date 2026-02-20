@@ -49,7 +49,7 @@ const BodySizeSelectScreen: React.FC = () => {
           키를 알려주세요
         </div>
         <div style={{ fontSize: typography.fontSize.body2, color: colors.gray600, lineHeight: 1.5 }}>
-          체형에 맞는 차량을 추천해드릴게요
+          체형에 맞는 차량을 찾아볼게요
         </div>
       </div>
 
@@ -69,7 +69,7 @@ const BodySizeSelectScreen: React.FC = () => {
       <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: colors.gray50, borderRadius: spacing.md, padding: spacing.lg, marginTop: spacing.xl }}>
         <span style={{ fontSize: 16, marginRight: spacing.sm }}>💡</span>
         <div style={{ flex: 1, fontSize: typography.fontSize.caption, color: colors.gray600, lineHeight: 1.75 }}>
-          체형에 따라 시트 포지션, 시야 확보 등이 달라져요. 편안한 운전을 위한 차량 크기를 추천해드릴게요.
+          체형에 따라 시트 포지션, 시야 확보 등이 달라져요. 편안한 운전을 위한 차량 크기를 알아볼게요.
         </div>
       </div>
     </ScreenContainer>

@@ -36,7 +36,7 @@ const GenderSelectScreen: React.FC = () => {
           성별을 선택해주세요
         </div>
         <div style={{ fontSize: typography.fontSize.body2, color: colors.gray600, lineHeight: 1.5 }}>
-          차량 추천에 참고하기 위한 정보예요
+          차량 탐색에 참고하기 위한 정보예요
         </div>
       </div>
 
@@ -54,7 +54,7 @@ const GenderSelectScreen: React.FC = () => {
       </div>
 
       <div style={{ fontSize: typography.fontSize.caption, color: colors.gray500, textAlign: 'center', marginTop: spacing.xl }}>
-        선택하신 정보는 추천에만 활용되며, 별도로 저장되지 않아요.
+        선택하신 정보는 탐색에만 활용되며, 별도로 저장되지 않아요.
       </div>
     </ScreenContainer>
   );

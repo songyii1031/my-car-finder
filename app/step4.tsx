@@ -69,7 +69,7 @@ const BudgetSelectScreen: React.FC = () => {
       <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: colors.gray50, borderRadius: spacing.md, padding: spacing.lg, marginTop: spacing.xl }}>
         <span style={{ fontSize: 16, marginRight: spacing.sm }}>📌</span>
         <div style={{ flex: 1, fontSize: typography.fontSize.caption, color: colors.gray600, lineHeight: 1.75 }}>
-          예산에 따라 국내차/외제차, 신차/중고차 등 다양한 옵션을 추천해드려요.
+          예산에 따라 국내차/외제차, 신차/중고차 등 다양한 옵션을 살펴볼 수 있어요.
         </div>
       </div>
     </ScreenContainer>

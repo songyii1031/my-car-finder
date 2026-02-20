@@ -1,7 +1,7 @@
 /**
  * recommend.ts
- * 자동차 매칭 로직
- * 사용자 입력을 기반으로 어울리는 자동차 종류를 안내
+ * 자동차 탐색 로직
+ * 사용자 입력을 기반으로 살펴볼 만한 자동차 종류를 보여줌
  */
 // 예산 레벨 변환 (비교 연산용)
 const budgetLevel = {
@@ -19,8 +19,8 @@ const isVeryHighBudget = (budget) => budgetLevel[budget] >= 4;
 // 예산이 매우 낮은지 확인 (2천만원 이하)
 const isVeryLowBudget = (budget) => budgetLevel[budget] === 1;
 /**
- * 메인 매칭 함수
- * 사용자 입력을 받아 1~3개의 어울리는 자동차 카테고리를 안내
+ * 메인 탐색 함수
+ * 사용자 입력을 받아 1~3개의 살펴볼 만한 자동차 카테고리를 보여줌
  */
 export function recommendCars(input) {
     const { gender, bodySize, preferences, budget } = input;
@@ -34,7 +34,7 @@ export function recommendCars(input) {
                 category: '스포츠카/쿠페',
                 origin: '외제차',
                 example: 'BMW 4시리즈, 포르쉐 카이맨, 아우디 TT',
-                reason: '스포티한 드라이빙을 즐기시는 분께 최고의 주행 경험을 선사합니다. 파워풀한 엔진과 정교한 핸들링이 특징입니다.',
+                reason: '스포티한 드라이빙을 즐기시는 분들이 많이 찾는 차종입니다. 파워풀한 엔진과 정교한 핸들링이 특징이에요.',
                 emoji: '🏎️',
                 priority: 10,
             });
@@ -44,7 +44,7 @@ export function recommendCars(input) {
                 category: '스포티 해치백',
                 origin: '국내차',
                 example: '현대 아반떼 N라인, 현대 벨로스터 N, 기아 스팅어',
-                reason: '합리적인 가격에 스포티한 감성을 느낄 수 있습니다. 국내차 특유의 가성비와 편의사양이 돋보입니다.',
+                reason: '비교적 합리적인 가격대에서 스포티한 감성을 느낄 수 있는 차종이에요. 국내차 특유의 가성비와 편의사양이 눈에 띄어요.',
                 emoji: '🚗',
                 priority: 9,
             });
@@ -56,7 +56,7 @@ export function recommendCars(input) {
             category: '미니밴/대형 SUV',
             origin: '국내차',
             example: '기아 카니발, 현대 팰리세이드, 기아 쏘렌토',
-            reason: '넓은 실내 공간과 편안한 승차감으로 가족 여행에 최적화되어 있습니다. 다양한 시트 구성이 가능합니다.',
+            reason: '넓은 실내 공간과 편안한 승차감이 특징이에요. 다양한 시트 구성이 가능해서 가족 여행 시 살펴보시는 분들이 많아요.',
             emoji: '👨‍👩‍👧‍👦',
             priority: 10,
         });
@@ -65,7 +65,7 @@ export function recommendCars(input) {
                 category: '프리미엄 SUV',
                 origin: '외제차',
                 example: '볼보 XC90, 벤츠 GLS, BMW X5',
-                reason: '최상의 안전 기능과 프리미엄 편의사양으로 가족의 안전과 편안함을 동시에 챙길 수 있습니다.',
+                reason: '안전 기능과 프리미엄 편의사양이 돋보이는 차종이에요. 여유 있는 예산이라면 한번 살펴보셔도 좋을 것 같아요.',
                 emoji: '🛡️',
                 priority: 8,
             });
@@ -78,7 +78,7 @@ export function recommendCars(input) {
                 category: '대형 세단',
                 origin: '국내/외제차 모두',
                 example: '제네시스 G80, BMW 5시리즈, 벤츠 E클래스',
-                reason: '품격 있는 외관과 고급스러운 실내로 비즈니스 미팅에 최적입니다. 뛰어난 승차감도 장점입니다.',
+                reason: '품격 있는 외관과 고급스러운 실내가 특징이에요. 비즈니스 미팅이 잦으신 분들이 많이 찾는 차종이에요.',
                 emoji: '💼',
                 priority: 10,
             });
@@ -88,7 +88,7 @@ export function recommendCars(input) {
                 category: '준중형 세단',
                 origin: '국내차',
                 example: '현대 아반떼, 기아 K3, 현대 소나타',
-                reason: '깔끔한 디자인과 연비 효율이 좋아 출퇴근용으로 적합합니다. 유지비 부담도 적습니다.',
+                reason: '깔끔한 디자인과 연비 효율이 좋아요. 출퇴근용으로 많이 선택되는 차종이에요.',
                 emoji: '🚘',
                 priority: 9,
             });
@@ -101,7 +101,7 @@ export function recommendCars(input) {
                 category: '프리미엄 전기차',
                 origin: '국내/외제차 모두',
                 example: '현대 아이오닉6, 테슬라 모델3, 기아 EV6',
-                reason: '친환경적이면서도 첨단 기술이 집약되어 있습니다. 전기차 보조금 혜택도 받을 수 있습니다.',
+                reason: '친환경적이면서도 첨단 기술이 집약되어 있어요. 전기차 보조금 혜택도 확인해보시면 좋을 것 같아요.',
                 emoji: '⚡',
                 priority: 10,
             });
@@ -111,7 +111,7 @@ export function recommendCars(input) {
                 category: '하이브리드/소형 전기차',
                 origin: '국내차',
                 example: '현대 아이오닉, 기아 니로 HEV, 기아 레이 EV',
-                reason: '연비가 뛰어나 유류비 절감에 효과적입니다. 친환경 차량 혜택도 누릴 수 있습니다.',
+                reason: '연비가 뛰어나서 유류비 절감에 효과적이에요. 친환경 차량 혜택도 있으니 참고해보세요.',
                 emoji: '🌿',
                 priority: 9,
             });
@@ -124,7 +124,7 @@ export function recommendCars(input) {
                 category: '정통 오프로더',
                 origin: '국내/외제차 모두',
                 example: '기아 모하비, 랜드로버 디펜더, 지프 랭글러',
-                reason: '험한 지형도 거뜬히 소화하는 강력한 오프로드 성능을 갖추고 있습니다. 아웃도어 활동에 최적입니다.',
+                reason: '험한 지형도 거뜬히 소화하는 강력한 오프로드 성능을 갖추고 있어요. 아웃도어 활동을 즐기시는 분들이 많이 찾아요.',
                 emoji: '🏔️',
                 priority: 10,
             });
@@ -134,7 +134,7 @@ export function recommendCars(input) {
                 category: '중형 SUV',
                 origin: '국내차',
                 example: '현대 투싼, 기아 스포티지, 쌍용 토레스',
-                reason: '도심과 야외 활동 모두 적합한 만능 SUV입니다. 적재 공간도 넉넉합니다.',
+                reason: '도심과 야외 활동 모두 무난하게 소화하는 SUV예요. 적재 공간도 넉넉한 편이에요.',
                 emoji: '🚵',
                 priority: 9,
             });
@@ -147,7 +147,7 @@ export function recommendCars(input) {
                 category: '경차/소형차',
                 origin: '국내차',
                 example: '기아 모닝, 기아 레이, 현대 캐스퍼',
-                reason: '구매 비용과 유지비가 저렴하고, 도심 주행과 주차에 유리합니다. 작은 체형에 최적화된 운전 포지션을 제공합니다.',
+                reason: '구매 비용과 유지비가 저렴하고, 도심 주행과 주차에 유리해요. 작은 체형이시라면 운전 포지션도 편하실 거예요.',
                 emoji: '💰',
                 priority: 10,
             });
@@ -157,48 +157,48 @@ export function recommendCars(input) {
                 category: '준중형 국내차',
                 origin: '국내차',
                 example: '현대 아반떼, 현대 코나, 기아 셀토스',
-                reason: '가성비가 뛰어나면서도 충분한 실내 공간을 제공합니다. 다양한 편의사양도 갖추고 있습니다.',
+                reason: '가성비가 뛰어나면서도 실내 공간이 넉넉한 편이에요. 다양한 편의사양도 갖추고 있어요.',
                 emoji: '💵',
                 priority: 9,
             });
         }
     }
-    // 7. 신체 크기 기반 추가 안내
+    // 7. 신체 크기 기반 추가 정보
     if (bodySize === 'large' && recommendations.length < 3) {
-        // 대형 체형은 넓은 차량 안내
+        // 대형 체형은 넓은 차량 정보 제공
         if (!hasPreference('costEffective') && !recommendations.some(r => r.category.includes('SUV') || r.category.includes('대형'))) {
             recommendations.push({
                 category: '대형 SUV/세단',
                 origin: '국내차',
                 example: '현대 팰리세이드, 기아 쏘렌토, 제네시스 G80',
-                reason: '큰 체형에 맞는 넓은 실내 공간과 편안한 시트 포지션을 제공합니다.',
+                reason: '실내 공간이 넓고 시트 포지션이 여유로운 차종이에요. 큰 체형이시라면 한번 살펴보셔도 좋을 것 같아요.',
                 emoji: '🚙',
                 priority: 5,
             });
         }
     }
     if (bodySize === 'small' && recommendations.length < 3) {
-        // 소형 체형에 대형차 선택시 주의 안내
+        // 소형 체형 관련 정보
         if (!hasPreference('costEffective')) {
             recommendations.push({
                 category: '컴팩트카/소형 SUV',
                 origin: '국내차',
                 example: '현대 캐스퍼, 기아 셀토스, 현대 베뉴',
-                reason: '작은 체형에 맞는 운전 포지션과 조작 편의성을 제공합니다. 시야 확보가 용이합니다.',
+                reason: '운전 포지션 조절이 용이하고 조작이 편한 차종이에요. 시야 확보도 수월한 편이에요.',
                 emoji: '🚗',
                 priority: 5,
             });
         }
     }
-    // 8. 기본 안내 (선호도가 명확하지 않은 경우)
+    // 8. 기본 정보 (선호도가 명확하지 않은 경우)
     if (recommendations.length === 0) {
-        // 예산별 기본 안내
+        // 예산별 기본 정보
         if (isVeryHighBudget(budget)) {
             recommendations.push({
                 category: '프리미엄 세단/SUV',
                 origin: '국내/외제차 모두',
                 example: '제네시스 GV80, BMW X5, 벤츠 E클래스',
-                reason: '높은 예산에 맞는 프리미엄 브랜드의 대표 모델들입니다. 품격과 성능을 모두 갖추고 있습니다.',
+                reason: '해당 예산대에서 많이 찾으시는 프리미엄 브랜드의 대표 모델들이에요.',
                 emoji: '✨',
                 priority: 7,
             });
@@ -208,7 +208,7 @@ export function recommendCars(input) {
                 category: '경차/준중형차',
                 origin: '국내차',
                 example: '기아 모닝, 현대 아반떼, 기아 K3',
-                reason: '합리적인 가격에 실용성을 갖춘 차량들입니다. 유지비 부담도 적습니다.',
+                reason: '합리적인 가격에 실용성을 갖춘 차량들이에요. 유지비 부담도 적은 편이에요.',
                 emoji: '💰',
                 priority: 7,
             });
@@ -218,7 +218,7 @@ export function recommendCars(input) {
                 category: '중형 세단/SUV',
                 origin: '국내차',
                 example: '현대 소나타, 기아 K5, 현대 투싼',
-                reason: '가장 대중적이고 균형 잡힌 선택입니다. 다양한 옵션 구성이 가능합니다.',
+                reason: '가장 대중적으로 많이 선택되는 차종이에요. 다양한 옵션 구성이 가능해요.',
                 emoji: '🚘',
                 priority: 7,
             });
@@ -230,24 +230,24 @@ export function recommendCars(input) {
         .slice(0, 3);
 }
 /**
- * 결과에 대한 추가 조언 생성
+ * 결과에 대한 추가 참고사항 생성
  */
 export function getAdditionalAdvice(input) {
     const { bodySize, budget } = input;
     const advice = [];
-    // 신체 크기 관련 조언
+    // 신체 크기 관련 참고사항
     if (bodySize === 'small') {
-        advice.push('시트 포지션 조절 범위가 넓은 차량을 선택하시면 더 편안한 운전이 가능합니다.');
+        advice.push('시트 포지션 조절 범위가 넓은 차량을 선택하시면 더 편안한 운전이 가능해요.');
     }
     if (bodySize === 'large') {
-        advice.push('헤드룸과 레그룸이 충분한지 실제 시승을 통해 확인해보시는 것을 권장합니다.');
+        advice.push('헤드룸과 레그룸이 충분한지 실제 시승을 통해 확인해보시는 게 좋아요.');
     }
-    // 예산 관련 조언
+    // 예산 관련 참고사항
     if (isVeryLowBudget(budget)) {
-        advice.push('중고차 시장도 함께 살펴보시면 더 다양한 선택지를 찾으실 수 있습니다.');
+        advice.push('중고차 시장도 함께 살펴보시면 더 다양한 선택지가 있을 수 있어요.');
     }
     if (isVeryHighBudget(budget)) {
-        advice.push('프리미엄 브랜드의 경우 딜러십에서 다양한 금융 프로그램을 제공하니 상담받아보세요.');
+        advice.push('프리미엄 브랜드의 경우 딜러십에서 다양한 금융 프로그램을 제공하니 문의해보셔도 좋아요.');
     }
     return advice;
 }
@@ -257,10 +257,10 @@ export function getAdditionalAdvice(input) {
 export function generateShareText(recommendations) {
     const topRecommendation = recommendations[0];
     if (!topRecommendation) {
-        return '내 차를 찾아줘 앱에서 나에게 어울리는 차를 알아보세요!';
+        return '내 차를 찾아줘 앱에서 나한테 맞을 것 같은 차를 살펴보세요!';
     }
     return `[내 차를 찾아줘 결과]\n\n` +
-        `${topRecommendation.emoji} 어울리는 차종: ${topRecommendation.category}\n` +
+        `${topRecommendation.emoji} 살펴볼 차종: ${topRecommendation.category}\n` +
         `참고 차종: ${topRecommendation.example}\n\n` +
-        `나도 알아보러 가기 👉 (앱 링크)`;
+        `나도 해보러 가기 👉 (앱 링크)`;
 }
