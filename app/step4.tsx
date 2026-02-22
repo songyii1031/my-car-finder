@@ -96,6 +96,7 @@ const BudgetSelectScreen: React.FC = () => {
 
   // 버튼 라벨 결정
   const getButtonLabel = () => {
+    if (!budget) return '예산을 선택해주세요';
     if (adStatus === 'loading') return '준비 중...';
     if (adStatus === 'error') return '결과 보기';
     if (isAdReady) return '🎬 광고보고 결과보기';
@@ -159,7 +160,7 @@ const BudgetSelectScreen: React.FC = () => {
         </div>
 
         {/* 광고 안내 */}
-        {isAdReady && (
+        {isAdReady && budget && (
           <div style={{ 
             display: 'flex', 
             flexDirection: 'row', 
