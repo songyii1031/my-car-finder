@@ -111,9 +111,9 @@ const RewardedAdModal = ({ isVisible, onClose, onRewarded, onSkip, }) => {
                             fontSize: typography.fontSize.small,
                             color: colors.gray500,
                             marginBottom: spacing.lg,
-                        }, children: "\uAD11\uACE0" }), _jsxs("div", { style: {
+                        }, children: "\uAD11\uACE0" }), _jsxs("div", { id: "ait-rewarded-ad-container", style: {
                             width: '100%',
-                            height: 200,
+                            minHeight: 200,
                             backgroundColor: colors.gray100,
                             borderRadius: borderRadius.lg,
                             display: 'flex',
@@ -121,15 +121,16 @@ const RewardedAdModal = ({ isVisible, onClose, onRewarded, onSkip, }) => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             marginBottom: spacing.xl,
+                            overflow: 'hidden',
                         }, children: [_jsx("span", { style: { fontSize: 48, marginBottom: spacing.md }, children: "\uD83D\uDE97" }), _jsx("div", { style: {
                                     fontSize: typography.fontSize.body1,
                                     fontWeight: typography.fontWeight.semibold,
                                     color: colors.gray700,
-                                }, children: "\uAD11\uACE0 \uC601\uC5ED" }), _jsx("div", { style: {
+                                }, children: "\uAD11\uACE0 \uB85C\uB529 \uC911..." }), _jsx("div", { style: {
                                     fontSize: typography.fontSize.caption,
                                     color: colors.gray500,
                                     marginTop: spacing.sm,
-                                }, children: "\uC2E4\uC81C \uAD11\uACE0\uAC00 \uC5EC\uAE30\uC5D0 \uD45C\uC2DC\uB429\uB2C8\uB2E4" })] }), _jsx("div", { style: {
+                                }, children: "\uC7A0\uC2DC\uB9CC \uAE30\uB2E4\uB824\uC8FC\uC138\uC694" })] }), _jsx("div", { style: {
                             width: '100%',
                             height: 4,
                             backgroundColor: colors.gray200,

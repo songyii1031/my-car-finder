@@ -161,32 +161,36 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
           광고
         </div>
 
-        {/* 광고 이미지/콘텐츠 영역 (실제 광고로 대체됨) */}
-        <div style={{
-          width: '100%',
-          height: 200,
-          backgroundColor: colors.gray100,
-          borderRadius: borderRadius.lg,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: spacing.xl,
-        }}>
+        {/* 광고 콘텐츠 영역 */}
+        <div
+          id="ait-rewarded-ad-container"
+          style={{
+            width: '100%',
+            minHeight: 200,
+            backgroundColor: colors.gray100,
+            borderRadius: borderRadius.lg,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: spacing.xl,
+            overflow: 'hidden',
+          }}
+        >
           <span style={{ fontSize: 48, marginBottom: spacing.md }}>🚗</span>
           <div style={{
             fontSize: typography.fontSize.body1,
             fontWeight: typography.fontWeight.semibold,
             color: colors.gray700,
           }}>
-            광고 영역
+            광고 로딩 중...
           </div>
           <div style={{
             fontSize: typography.fontSize.caption,
             color: colors.gray500,
             marginTop: spacing.sm,
           }}>
-            실제 광고가 여기에 표시됩니다
+            잠시만 기다려주세요
           </div>
         </div>
 

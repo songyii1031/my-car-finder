@@ -5,6 +5,7 @@ import RewardedAdModal from '../components/RewardedAdModal';
 import { useUserInputStore, budgetOptions, Budget } from '../store/userInput';
 import { useRewardedAd } from '../hooks/useRewardedAd';
 import { colors, typography, spacing } from '../styles/theme';
+import { isAITAvailable } from '../config/adConfig';
 
 const BudgetSelectScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const BudgetSelectScreen: React.FC = () => {
     isAdReady,
     error,
     loadAd,
+    showAd,
     resetAd,
   } = useRewardedAd({
     onAdLoaded: () => {
@@ -24,6 +26,11 @@ const BudgetSelectScreen: React.FC = () => {
     },
     onRewarded: () => {
       console.log('광고 시청 완료 - 보상 지급');
+      // AIT SDK 모드에서는 SDK가 광고 UI를 직접 관리하므로
+      // onRewarded 콜백에서 바로 결과 페이지로 이동
+      if (isAITAvailable()) {
+        navigate('/result');
+      }
     },
     onAdSkipped: () => {
       console.log('광고 스킵됨');
@@ -47,12 +54,17 @@ const BudgetSelectScreen: React.FC = () => {
   }, [adStatus, resetAd, loadAd]);
 
   // 광고 보고 결과보기 버튼 클릭
-  const handleShowAdAndResult = () => {
+  const handleShowAdAndResult = async () => {
     if (!isStepValid(4)) return;
-
     if (isAdReady) {
-      // 광고 준비 완료 → 광고 모달 표시
-      setShowAdModal(true);
+      if (isAITAvailable()) {
+        // AIT SDK 모드: SDK가 네이티브 광고 UI를 직접 표시
+        // onRewarded 콜백에서 결과 페이지로 이동됨
+        await showAd();
+      } else {
+        // 폴백 모드: 자체 광고 모달 표시
+        setShowAdModal(true);
+      }
     } else {
       // 광고가 아직 로딩 중이거나 에러인 경우 → 바로 결과로 이동
       navigate('/result');
