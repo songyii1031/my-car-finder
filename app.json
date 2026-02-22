@@ -1,10 +1,10 @@
 {
   "name": "my-car-finder",
-  "displayName": "내 차를 찾아줘",
+  "displayName": "차BTI",
   "version": "1.0.0",
   "description": "사용자 맞춤 자동차 탐색 큐레이션 미니앱",
   "expo": {
-    "name": "내 차를 찾아줘",
+    "name": "차BTI",
     "slug": "my-car-finder",
     "version": "1.0.0",
     "orientation": "portrait",

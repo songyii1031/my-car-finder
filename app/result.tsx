@@ -34,7 +34,7 @@ const ResultScreen: React.FC = () => {
     const shareText = generateShareText(recommendations);
     if (navigator.share) {
       try {
-        await navigator.share({ title: '내 차를 찾아줘 결과', text: shareText });
+        await navigator.share({ title: '차BTI 결과', text: shareText });
       } catch {
         // 사용자가 취소한 경우 등
       }

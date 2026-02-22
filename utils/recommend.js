@@ -257,9 +257,9 @@ export function getAdditionalAdvice(input) {
 export function generateShareText(recommendations) {
     const topRecommendation = recommendations[0];
     if (!topRecommendation) {
-        return '내 차를 찾아줘 앱에서 나한테 맞을 것 같은 차를 살펴보세요!';
+        return '차BTI에서 나한테 맞을 것 같은 차를 살펴보세요!';
     }
-    return `[내 차를 찾아줘 결과]\n\n` +
+    return `[차BTI 결과]\n\n` +
         `${topRecommendation.emoji} 살펴볼 차종: ${topRecommendation.category}\n` +
         `참고 차종: ${topRecommendation.example}\n\n` +
         `나도 해보러 가기 👉 (앱 링크)`;

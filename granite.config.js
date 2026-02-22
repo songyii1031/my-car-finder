@@ -10,7 +10,7 @@ export default defineConfig({
         // 앱 식별자 (영문, 하이픈 사용)
         name: 'my-car-finder',
         // 사용자에게 표시되는 앱 이름
-        displayName: '내 차를 찾아줘',
+        displayName: '차BTI',
         // 앱 버전
         version: '1.0.0',
         // 앱 설명
