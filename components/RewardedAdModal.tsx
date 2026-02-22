@@ -4,7 +4,7 @@
  * 광고 시청 중 표시되는 전체화면 모달
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { colors, typography, spacing, borderRadius } from '../styles/theme';
 import { AD_CONFIG } from '../config/adConfig';
 
@@ -25,6 +25,23 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
   const [canSkip, setCanSkip] = useState(false);
   const [adProgress, setAdProgress] = useState(0);
 
+  // 콜백을 ref로 관리하여 useEffect 의존성 무한루프 방지
+  const onRewardedRef = useRef(onRewarded);
+  const onCloseRef = useRef(onClose);
+  const onSkipRef = useRef(onSkip);
+
+  useEffect(() => {
+    onRewardedRef.current = onRewarded;
+  }, [onRewarded]);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    onSkipRef.current = onSkip;
+  }, [onSkip]);
+
   useEffect(() => {
     if (!isVisible) {
       setCountdown(AD_CONFIG.SKIP_DELAY / 1000);
@@ -35,7 +52,7 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
 
     // 카운트다운 타이머
     const countdownInterval = setInterval(() => {
-      setCountdown((prev) => {
+      setCountdown((prev: number) => {
         if (prev <= 1) {
           setCanSkip(true);
           clearInterval(countdownInterval);
@@ -47,7 +64,7 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
 
     // 광고 진행률 타이머
     const progressInterval = setInterval(() => {
-      setAdProgress((prev) => {
+      setAdProgress((prev: number) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
@@ -56,10 +73,10 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
       });
     }, 100);
 
-    // 광고 완료 타이머
+    // 광고 완료 타이머 - ref를 사용하여 의존성 배열에 넣지 않음
     const rewardTimer = setTimeout(() => {
-      onRewarded();
-      onClose();
+      onRewardedRef.current();
+      onCloseRef.current();
     }, AD_CONFIG.MIN_WATCH_TIME);
 
     return () => {
@@ -67,14 +84,14 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
       clearInterval(progressInterval);
       clearTimeout(rewardTimer);
     };
-  }, [isVisible, onRewarded, onClose]);
+  }, [isVisible]); // isVisible만 의존 — 콜백은 ref로 참조
 
   if (!isVisible) return null;
 
   const handleSkip = () => {
-    if (canSkip && onSkip) {
-      onSkip();
-      onClose();
+    if (canSkip && onSkipRef.current) {
+      onSkipRef.current();
+      onCloseRef.current();
     }
   };
 

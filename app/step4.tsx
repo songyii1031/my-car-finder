@@ -15,6 +15,7 @@ const BudgetSelectScreen: React.FC = () => {
   const {
     adStatus,
     isAdReady,
+    error,
     loadAd,
     resetAd,
   } = useRewardedAd({
@@ -34,10 +35,27 @@ const BudgetSelectScreen: React.FC = () => {
     loadAd();
   }, [loadAd]);
 
+  // 광고 로드 에러 시 자동 재시도
+  useEffect(() => {
+    if (adStatus === 'error') {
+      const retryTimer = setTimeout(() => {
+        resetAd();
+        loadAd();
+      }, 2000);
+      return () => clearTimeout(retryTimer);
+    }
+  }, [adStatus, resetAd, loadAd]);
+
   // 광고 보고 결과보기 버튼 클릭
   const handleShowAdAndResult = () => {
-    if (isStepValid(4)) {
+    if (!isStepValid(4)) return;
+
+    if (isAdReady) {
+      // 광고 준비 완료 → 광고 모달 표시
       setShowAdModal(true);
+    } else {
+      // 광고가 아직 로딩 중이거나 에러인 경우 → 바로 결과로 이동
+      navigate('/result');
     }
   };
 
@@ -66,8 +84,10 @@ const BudgetSelectScreen: React.FC = () => {
 
   // 버튼 라벨 결정
   const getButtonLabel = () => {
-    if (adStatus === 'loading') return '광고 로딩 중...';
-    return '🎬 광고보고 결과보기';
+    if (adStatus === 'loading') return '준비 중...';
+    if (adStatus === 'error') return '결과 보기';
+    if (isAdReady) return '🎬 광고보고 결과보기';
+    return '결과 보기';
   };
 
   return (
@@ -88,7 +108,7 @@ const BudgetSelectScreen: React.FC = () => {
               onPress={handleShowAdAndResult}
               variant="primary"
               size="large"
-              disabled={!isStepValid(4) || adStatus === 'loading'}
+              disabled={!isStepValid(4)}
               style={{ flex: 2 }}
             />
           </div>
@@ -127,21 +147,23 @@ const BudgetSelectScreen: React.FC = () => {
         </div>
 
         {/* 광고 안내 */}
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'row', 
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: colors.primary + '10', 
-          borderRadius: spacing.md, 
-          padding: spacing.md, 
-          marginTop: spacing.lg 
-        }}>
-          <span style={{ fontSize: 14, marginRight: spacing.sm }}>🎬</span>
-          <div style={{ fontSize: typography.fontSize.small, color: colors.primary }}>
-            짧은 광고 시청 후 결과를 확인할 수 있어요
+        {isAdReady && (
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: colors.primary + '10', 
+            borderRadius: spacing.md, 
+            padding: spacing.md, 
+            marginTop: spacing.lg 
+          }}>
+            <span style={{ fontSize: 14, marginRight: spacing.sm }}>🎬</span>
+            <div style={{ fontSize: typography.fontSize.small, color: colors.primary }}>
+              짧은 광고 시청 후 결과를 확인할 수 있어요
+            </div>
           </div>
-        </div>
+        )}
       </ScreenContainer>
 
       {/* 보상형 광고 모달 */}
